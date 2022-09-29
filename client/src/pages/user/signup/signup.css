@@ -1,0 +1,15 @@
+.rContainer {
+  position: absolute;
+  border-radius: 5px;
+  right: 750px;
+  display: flex;
+  justify-content: center;
+  background-color: #2C043A;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;    
+  margin-top: 20rem;
+  height: 350px;
+  width: 500px;
+
+}
