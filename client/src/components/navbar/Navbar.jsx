@@ -5,7 +5,7 @@ import { AuthContext } from "../../context/AuthContext ";
 
 const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
-  const logout = (e) => {
+  const logout = (e) => {   
     dispatch ({type: "LOGOUT"})
   }
   return (

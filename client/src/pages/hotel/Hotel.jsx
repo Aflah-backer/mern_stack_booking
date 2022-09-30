@@ -1,8 +1,8 @@
 import "./hotel.css";
-import Navbar from "../../../components/navbar/Navbar";
-import Header from "../../../components/header/Header";
-import MailList from "../../../components/mailList/MailList";
-import Footer from "../../../components/footer/Footer";
+import Navbar from "../../components/navbar/Navbar";
+import Header from "../../components/header/Header";
+import MailList from "../../components/mailList/MailList";
+import Footer from "../../components/footer/Footer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircleArrowLeft,
@@ -11,11 +11,11 @@ import {
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
 import { useContext, useState } from "react";
-import useFetch from "../../../hooks/userFetch";
+import useFetch from "../../hooks/userFetch";
 import { useLocation, useNavigate } from "react-router-dom";
-import { SearchContext } from "../../../context/SearchContext";
-import { AuthContext } from "../../../context/AuthContext ";
-import Reserve from "../../../components/reserve/Reserve";
+import { SearchContext } from "../../context/SearchContext";
+import { AuthContext } from "../../context/AuthContext ";
+import Reserve from "../../components/reserve/Reserve";
 
 const Hotel = () => {
   const location = useLocation();

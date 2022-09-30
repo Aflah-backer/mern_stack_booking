@@ -1,9 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/user/home/Home";
-import Hotel from "./pages/user/hotel/Hotel";
-import List from "./pages/user/list/List";
-import Login from "./pages/user/login/Login";
-import Signup from "./pages/user/signup/Signup";
+// import Login from "../../admin/src/pages/login/Login";
+import Login from "./pages/login/Login";
+import Home from "./pages/home/Home";
+import Hotel from "./pages/hotel/Hotel";
+import List from "./pages/list/List";
+import Signup from "./pages/signup/Signup";
 
 function App() {
   return (

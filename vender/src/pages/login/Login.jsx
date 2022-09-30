@@ -1,9 +1,8 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../context/AuthContext ";
-import { Link } from "react-router-dom";
-import "./login.css";
+import { AuthContext } from "../../context/AuthContext ";
+import "./login.scss";
 
 function Login() {
   const [credentials, setCredentials] = useState({
@@ -24,7 +23,14 @@ function Login() {
     try {
       const res = await axios.post("/auth/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      navigate("/");
+      if (res.data.isAdmin) {
+        navigate("/");
+      } else {
+        dispatch({
+          type: "LOGIN_FAILURE",
+          payload: { message: "You are not allowed!" },
+        });
+      }
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
@@ -52,15 +58,6 @@ function Login() {
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
-        <hr className="rLine" />
-        <Link to="/signup">
-        {" "}
-        <p
-          className="rLinkTo"
-        >
-         Rgister a new Account ? SIGNUP{" "}
-        </p>
-      </Link>
         {error && <span className="fError">{error.message}</span>}
       </div>
     </div>

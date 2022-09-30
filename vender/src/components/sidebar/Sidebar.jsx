@@ -24,7 +24,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">Booking.ml<br/>Admin</span>
+          <span className="logo">Booking.ml<br/>Vender</span>
         </Link>
       </div>
       <hr />
@@ -56,10 +56,6 @@ const Sidebar = () => {
             <span>Rooms</span>
           </li>
           </Link>
-          <li>
-            <PersonOutlineIcon  className="icon" />
-            <span>Vender</span>
-          </li>
           <p className="title">USEFUL</p>
           <li>
             <InsertChartIcon className="icon" />
