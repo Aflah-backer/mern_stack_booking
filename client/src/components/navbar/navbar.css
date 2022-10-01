@@ -1,4 +1,5 @@
 .navbar{
+  width: 100%;
   height: 50px;
   background-color: #ffffff;
   display: flex;
@@ -27,11 +28,44 @@
 }
 
 .rUserName {
+  text-transform: capitalize;
   color: black;
+  cursor: pointer;
+
 }
 
-.nButton {  
-  color: red;
-  border-radius: 5px;
-  border-color: #ffffff;
+.rUserName ul{
+  /* border-radius: 5px; */
+  /* list-style-type: none; */
+  position: absolute;
+  background-color: transparent;
+  color: transparent;
+
 }
+
+.rUserName ul:hover {
+  padding: 1rem;
+  border-radius: 3px;
+  list-style-type: none;
+  position: absolute;
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  width: 150px;
+  z-index: 1;
+  
+}
+
+.rUserName li{
+  height: 2rem;
+}
+
+.rUserName li:hover {
+  border-radius: 3px;
+  padding: 2px;
+  background-color: rgb(238, 238, 238);
+  color: #000000;
+  border: solid 1px;
+  border-color: #000000;
+}
+
+

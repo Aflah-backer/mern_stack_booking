@@ -36,8 +36,9 @@ function Login() {
     }
   };
   return (
-    <div className="login">
-      <div className="lContainer">
+    <div className="page">
+      <div className="login">
+        <h2 className="rTitle">booking Admin</h2>
         <h2 className="rTitle">login</h2>
         <input
           type="text"

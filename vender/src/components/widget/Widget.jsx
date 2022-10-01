@@ -1,9 +1,9 @@
 import "./widget.scss";
 import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
-import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import Groups2RoundedIcon from '@mui/icons-material/Groups2Rounded';
 
 const Widget = ({ type }) => {
   let data;
@@ -19,7 +19,7 @@ const Widget = ({ type }) => {
         isMoney: false,
         link: "See all users",
         icon: (
-          <PersonOutlinedIcon
+          <Groups2RoundedIcon
             className="icon"
             style={{
               color: "crimson",

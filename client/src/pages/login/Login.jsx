@@ -30,8 +30,8 @@ function Login() {
     }
   };
   return (
-    <div className="login">
-      <div className="lContainer">
+    <div className="page">
+      <div className="login">
         <h2 className="rTitle">login</h2>
         <input
           type="text"
@@ -54,13 +54,9 @@ function Login() {
         </button>
         <hr className="rLine" />
         <Link to="/signup">
-        {" "}
-        <p
-          className="rLinkTo"
-        >
-         Rgister a new Account ? SIGNUP{" "}
-        </p>
-      </Link>
+          {" "}
+          <p className="rLinkTo">Rgister a new Account ? SIGNUP </p>
+        </Link>
         {error && <span className="fError">{error.message}</span>}
       </div>
     </div>

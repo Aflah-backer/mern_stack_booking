@@ -4,14 +4,15 @@ import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { productInputs, userInputs } from "./formSource";
+import { userInputs } from "./formSource";
 import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext ";
 import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
 import NewHotel from "./pages/newHotel/NewHotel";
-import NewRoom from "./pages/newRoom/NewRoom"
+import NewRoom from "./pages/newRoom/NewRoom";
+import Signup from "./pages/signup/Signup";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -31,6 +32,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/">
+            <Route path="signup" element={<Signup />} />
             <Route path="login" element={<Login />} />
             <Route
               index
@@ -45,7 +47,7 @@ function App() {
                 index
                 element={
                   <ProductedRoute>
-                    <List  columns={userColumns}/>
+                    <List columns={userColumns} />
                   </ProductedRoute>
                 }
               />
@@ -71,7 +73,7 @@ function App() {
                 index
                 element={
                   <ProductedRoute>
-                    <List columns={hotelColumns}/>
+                    <List columns={hotelColumns} />
                   </ProductedRoute>
                 }
               />
@@ -97,7 +99,7 @@ function App() {
                 index
                 element={
                   <ProductedRoute>
-                    <List columns={roomColumns}/>
+                    <List columns={roomColumns} />
                   </ProductedRoute>
                 }
               />

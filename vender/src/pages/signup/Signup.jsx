@@ -8,7 +8,7 @@ import React, {
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext ";
-import "./signup.css";
+import "./signup.scss";
 function Signup() {
   const [username, setUserName] = useState("");
   const [email, setEmail] = useState("");
@@ -87,7 +87,7 @@ function Signup() {
   return (
     <div className="page">
       <div className="signup">
-        <h2 className="rTitle">Create an account</h2>
+        <h2 className="rTitle">Become a Seller</h2>
         <div className="form-outline mb-4">
           <input
             type="text"
@@ -128,7 +128,6 @@ function Signup() {
             Register
           </button>
         </div>
-        <hr className="rLine" />
         <Link to="/login">
           {" "}
           <p className="rLinkTo" style={{ textDecoration: "none" }}>
