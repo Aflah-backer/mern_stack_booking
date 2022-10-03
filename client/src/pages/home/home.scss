@@ -1,0 +1,35 @@
+$desktop: 1440px;
+$laptop: 1024px;
+$tablet: 768px;
+$mobileL: 425px;
+$mobileM: 375px;
+$mobileS: 320px;
+
+.homeContainer{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+
+  @media (max-width:$laptop) {
+    margin-left: 220px;
+  }
+  @media (max-width:$tablet) {
+    width: 800px;
+    margin-left: 220px;
+  }
+  @media (max-width:$mobileL) {
+    width: 1200px;
+    margin-left: 25px;
+  }
+}
+
+.homeTitle{
+  width: 1024px;
+  font-size: 20px;
+  @media (max-width:$laptop) {
+    margin-left: 13rem;
+    font-size: 30px;
+  }
+}

@@ -1,5 +1,5 @@
 import useFetch from "../../hooks/userFetch";
-import "./propertyList.css";
+import "./propertyList.scss";
 
 const PropertyList = () => {
   const { data, loading, error } = useFetch("/hotels/countByType");
@@ -13,24 +13,27 @@ const PropertyList = () => {
   ];
 
   return (
-    <div className="pList">
-      {loading ? (
-        "loading"
-      ) : (
-        <>
-          {data && images.map((img,i) => (<div className="pListItem" key={i}>
-            <img
-              src={img}
-              alt=""
-              className="pListImg"
-            />
-            <div className="pListTitles">
-              <h1>{data[i]?.type}</h1>
-              <h2>{data[i]?.count} {data[i]?.type} </h2>
-            </div>
-          </div>))}
-        </>
-      )}
+    <div className="maindiv">
+      <div className="pList">
+        {loading ? (
+          "loading"
+        ) : (
+          <>
+            {data &&
+              images.map((img, i) => (
+                <div className="pListItem" key={i}>
+                  <img src={img} alt="" className="pListImg" />
+                  <div className="pListTitles">
+                    <h1 className="Ctext">{data[i]?.type}</h1>
+                    <h2 className="sctext">
+                      {data[i]?.count} {data[i]?.type}{" "}
+                    </h2>
+                  </div>
+                </div>
+              ))}
+          </>
+        )}
+      </div>
     </div>
   );
 };

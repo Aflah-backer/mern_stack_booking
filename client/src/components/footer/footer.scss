@@ -1,0 +1,40 @@
+$desktop: 1440px;
+$laptop: 1024px;
+$tablet: 768px;
+$mobileL: 425px;
+$mobileM: 375px;
+$mobileS: 320px;
+
+.footer{
+  margin-top: 3rem;
+  width: 100%;
+  font-size: 12px;
+  min-width: 10px;
+  @media (max-width:$laptop) {
+    width: 1250px;
+  }
+}
+
+.fLists{
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 50px;
+  @media (max-width:$mobileL) {
+    display: flex;
+    align-items: center;
+    font-size: 30px;
+    flex-direction: column;
+  }
+}
+
+.fList{
+  list-style: none;
+  padding: 0;
+}
+
+.fListItem{
+  margin-bottom: 10px;
+  color: #000000;
+  cursor: pointer;
+}

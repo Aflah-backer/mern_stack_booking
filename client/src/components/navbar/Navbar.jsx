@@ -4,10 +4,16 @@ import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext ";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+
+
+// const navigate = useNavigate()
 const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
   const toVender =e =>{
-    
+    axios.get("http://localhost:3002")
+    console.log("hello");
+    // navigate("/")
   }
   const logout = (e) => {
     dispatch({ type: "LOGOUT" });

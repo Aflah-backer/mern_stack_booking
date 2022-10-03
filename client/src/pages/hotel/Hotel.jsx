@@ -1,4 +1,4 @@
-import "./hotel.css";
+import "./hotel.scss";
 import Navbar from "../../components/navbar/Navbar";
 import Header from "../../components/header/Header";
 import MailList from "../../components/mailList/MailList";
@@ -143,11 +143,11 @@ const Hotel = () => {
               </div>
             </div>
           </div>
-          <MailList />
-          <Footer />
         </div>
       )}
       {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
+      <MailList />
+          <Footer />
     </div>
   );
 };

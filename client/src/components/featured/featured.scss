@@ -1,0 +1,58 @@
+$desktop: 1440px;
+$laptop: 1200px;
+$tablet: 768px;
+$mobileL: 425px;
+$mobileM: 375px;
+$mobileS: 320px;
+
+
+.fearureContainer{
+  position: relative;
+  height: 250px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  @media (max-width:$mobileL) {
+    height: 3150px;
+  }
+  
+
+  .featured {
+    position: absolute;
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    z-index: 1;
+  
+    @media (max-width: $mobileL) {
+      flex-direction: column;
+      font-size: xx-large;
+    }
+
+  }
+  
+  .featuredItem {
+    position: relative;
+    color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    height: 250px;
+    flex: 1;
+  }
+  
+  .featuredImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .featuredTitles {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+  }
+  
+}
+

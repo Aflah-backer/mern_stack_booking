@@ -1,7 +1,17 @@
+$desktop: 1440px;
+$laptop: 1200px;
+$tablet: 768px;
+$mobileL: 425px;
+$mobileM: 375px;
+$mobileS: 320px;
+
 .listContainer {
   display: flex;
   justify-content: center;
   margin-top: 20px;
+  @media (max-width:$laptop) {
+    width: 1250px;
+  }
 }
 
 .listWrapper {

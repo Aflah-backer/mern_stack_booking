@@ -2,8 +2,8 @@ import "./featuredProperties.css";
 import useFetch from "../../hooks/userFetch.js";
 
 const FeaturedProperties = () => {
-  const { data, loading, error } = useFetch("/hotels?featured=true&limit=4");
-
+  const { data, loading, error } = useFetch("/hotels?featured=true");
+  console.log(data);
   return (
     <div className="fp">
       {loading ? (

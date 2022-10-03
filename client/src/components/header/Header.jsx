@@ -170,7 +170,7 @@ const Header = ({ type }) => {
                   </div>
                 )}
               </div>
-              <div className="headerSearchItem">
+              <div className="headerSearchItems">
                 <button className="headerBtn" onClick={handleSearch}>
                   Search
                 </button>

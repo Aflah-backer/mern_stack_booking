@@ -1,3 +1,16 @@
+$desktop: 1440px;
+$laptop: 1024px;
+$tablet: 768px;
+$mobileL: 425px;
+$mobileM: 375px;
+$mobileS: 320px;
+
+.maindiv {
+  @media (max-width:$mobileL) {
+
+  }
+}
+
 .pList{
   width: 100%;
   max-width: 1024px;
