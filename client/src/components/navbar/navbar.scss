@@ -1,0 +1,103 @@
+$desktop: 1440px;
+$laptop: 1200px;
+$tablet: 768px;
+$mobileL: 425px;
+$mobileM: 375px;
+$mobileS: 320px;
+
+.navbar {
+  width: 100%;
+  height: 50px;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  @media (max-width: $laptop) {
+    width: 1250px;
+  }
+  @media (max-width: $mobileL) {
+    height: 250px;
+    font-size: 40px;
+  }
+  @media (max-width:$mobileS) {
+    height: 300px;
+    font-size: 50px;
+  }
+
+  .navContainer {
+    width: 100%;
+    max-width: 1024px;
+    color: rgb(0, 0, 0);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .logo {
+    font-weight: 500;
+  }
+
+  .navButton {
+    margin-left: 20px;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    color: #003580;
+    @media (max-width: $mobileL) {
+      font-size: 30px;
+      width: 140px;
+    }
+  }
+
+  .rUserName {
+    text-transform: capitalize;
+    color: black;
+    cursor: pointer;
+
+    @media (max-width: $mobileL) {
+      font-size: 30px;
+      width: 140px;
+    }
+
+    @media (max-width: $mobileS) {
+      font-size: 40px;
+      width: 280px;
+    }
+  }
+
+  .rUserName ul {
+    position: absolute;
+    background-color: transparent;
+    color: transparent;
+  }
+
+  .rUserName ul:hover {
+    padding: 1rem;
+    border-radius: 3px;
+    list-style-type: none;
+    position: absolute;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    width: 150px;
+    z-index: 1;
+  }
+
+  .rUserName li {
+    height: 2rem;
+    @media (max-width:$mobileL) {
+      height: 3rem;
+      width: 200px;
+    }
+    @media (max-width:$mobileS) {
+      width: 290px;
+    }
+  }
+
+  .rUserName li:hover {
+    border-radius: 3px;
+    padding: 2px;
+    background-color: rgb(238, 238, 238);
+    color: #000000;
+    border: solid 1px;
+    border-color: #000000;
+  }
+}

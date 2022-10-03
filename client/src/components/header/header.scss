@@ -1,3 +1,10 @@
+$desktop: 1440px;
+$laptop: 1200px;
+$tablet: 768px;
+$mobileL: 425px;
+$mobileM: 375px;
+$mobileS: 320px;
+
 .header {
   width: 100%;
   background-color: #2C043A;
@@ -5,6 +12,21 @@
   display: flex;
   justify-content: center;
   position: relative;
+  @media (max-width: $laptop) {
+    width: 1250px;
+  }
+  @media (max-width: $mobileL) {
+    height: 350px;
+  }
+}
+
+.headerTitle {
+  @media (max-width:$mobileL) {
+    font-size: 60px;
+  }
+  @media (max-width:$mobileS) {
+    font-size: 70px;
+  }
 }
 
 .headerContainer {
@@ -19,6 +41,12 @@
 
 .headerDesc {
   margin: 20px 0px;
+  @media (max-width:$mobileL) {
+    font-size: 30px;
+  }
+  @media (max-width:$mobileS) {
+    font-size: 35px;
+  }
 }
 
 .headerBtn {
@@ -44,26 +72,55 @@
   bottom: -25px;
   width: 100%;
   max-width: 1024px;
+  @media (max-width:$mobileL) {
+    position: relative;
+    height: 150px;
+    color: #000000;
+  }
 }
 
 .headerIcon {
   color: rgb(54, 54, 54);
+  @media (max-width:$mobileL) {
+    position: absolute;
+    top: 10px;
+    font-size: 3em;
+    color: #000000;
+  }
 }
 
 .headerSearchItem {
   display: flex;
   align-items: center;
   gap: 10px;
+  @media (max-width:$mobileL) {
+    margin-left: 45px;
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 260px;
+  }
+ 
 }
 
 .headerSearchInput {
   border: none;
   outline: none;
+  @media (max-width:$mobileL) {
+    font-size: 25px;
+    color: #000000;
+  }
 }
 
 .headerSearchText {
   color: rgb(168, 168, 168);
   cursor: pointer;
+  @media (max-width:$mobileL) {
+    // display: none;
+    color: #000000;
+    font-size: 23px;
+  }
 }
 
 .date {
@@ -88,6 +145,12 @@
   display: flex;
   justify-content: space-between;
   margin: 10px;
+  @media (max-width:$mobileL) {
+    height: 200px;
+    width: 800px;
+    font-size: 40px;
+    color: #000000;
+  }
 }
 
 .optionCounter {
@@ -105,8 +168,21 @@
   color: #00a13e;
   cursor: pointer;
   background-color: white;
+  @media (max-width:$mobileL) {
+    font-size: 50px;
+    width: 120px;
+    height: 120px;
+  }
+}
+
+.optionCounterNumber{
+  @media (max-width:$mobileL) {
+    font-size: 50px;
+  }
 }
 
 .optionCounterButton:disabled {
   cursor: not-allowed;
+
 }
+

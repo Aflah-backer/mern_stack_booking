@@ -1,4 +1,4 @@
-import "./navbar.css";
+import "./navbar.scss";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext ";
@@ -25,9 +25,9 @@ const Navbar = () => {
             </h4>
             <a>
               <ul>
-                <li onClick={logout}>logout</li>
                 <li>Profile</li>
                 <li onClick={toVender}>become seller</li>
+                <li onClick={logout}>logout</li>
               </ul>
             </a>
           </span>
