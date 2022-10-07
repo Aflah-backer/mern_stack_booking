@@ -2,6 +2,7 @@ import User from "../models/Users.js";
 import bcrypt from "bcrypt";
 import { createError } from "../utils/error.js";
 import jwt from "jsonwebtoken";
+import Vender from "../models/Vender.js";
 
 export const register = async (req, res, next) => {
   try {
@@ -22,6 +23,26 @@ export const register = async (req, res, next) => {
     next(err);
   }
 };
+
+//vender/register
+
+export const registerVender = async (req, res, next) => {
+  try {
+    const salt = bcrypt.genSaltSync(10)
+    const hash = bcrypt.hashSync(req.body.password, salt)
+
+    const newVender = new Vender({
+      ...req.body,
+      password: hash,
+    })
+
+    await newVender.save()
+    res.status(200).send("vender has been created")
+  } catch (err) {
+    console.log(err.message);
+    next(err)
+  } 
+}
 
 //LOGIN
 export const login = async (req, res, next) => {
@@ -52,3 +73,35 @@ export const login = async (req, res, next) => {
     next(err);
   }
 };
+
+//vender login//
+
+export const venderLogin = async (req, res, next) => {
+  try {
+    const vender = await Vender.findOne({ email: req.body.email });
+    if (!vender) return next(createError(400, "vender not found!"));
+
+    const isPasswordCorrect = await bcrypt.compare(
+      req.body.password,
+      vender.password
+    );
+    if (!isPasswordCorrect)
+      return next(createError(400, "Worng password!"));
+
+    const token = jwt.sign(
+      { id: vender._id, isVender: vender.isVender },
+      process.env.JWT
+    );
+
+    const { password, isVender, ...otherDetails } = vender._doc;
+    res
+      .cookie("access_token", token, {
+        httpOnly: true,
+      })
+      .status(200 )
+      .json({ details:{...otherDetails}, isVender });
+  } catch (err) {
+    next(err);
+  }
+};
+
