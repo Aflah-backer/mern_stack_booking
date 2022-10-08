@@ -6,18 +6,15 @@ import Vender from "../models/Vender.js";
 
 export const register = async (req, res, next) => {
   try {
+    const { email, password, username } = req.body;
     const salt = bcrypt.genSaltSync(10);
-    const hash = bcrypt.hashSync(req.body.password, salt);
-
-    const newUser = new User({
-      // username: req.body.username,
-      // email: req.body.email,
-      ...req.body,
+    const hash = bcrypt.hashSync(password, salt);
+    const newUser = await new User({
+      username: username,
+      email: email,
       password: hash,
-    });
-
-    await newUser.save();
-    // if(!newUser) return next(createError(400,"something wrong"))
+    }).save();
+    if (!newUser) return next(createError(400, "something wrong"));
     res.status(200).send("User has been created");
   } catch (err) {
     next(err);
@@ -28,21 +25,24 @@ export const register = async (req, res, next) => {
 
 export const registerVender = async (req, res, next) => {
   try {
-    const salt = bcrypt.genSaltSync(10)
-    const hash = bcrypt.hashSync(req.body.password, salt)
-
-    const newVender = new Vender({
-      ...req.body,
+    const { password, email, name, country, city, phone } = req.body;
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+    const newVender = await new Vender({
+      name: name,
+      email: email,
+      country: country,
+      city: city,
+      phone: phone,
       password: hash,
-    })
-
-    await newVender.save()
-    res.status(200).send("vender has been created")
+    }).save();
+    if (!newVender) return next(createError(400, "something wrong"));
+    res.status(200).send("vender has been created");
   } catch (err) {
     console.log(err.message);
-    next(err)
-  } 
-}
+    next(err);
+  }
+};
 
 //LOGIN
 export const login = async (req, res, next) => {
@@ -54,8 +54,7 @@ export const login = async (req, res, next) => {
       req.body.password,
       user.password
     );
-    if (!isPasswordCorrect)
-      return next(createError(400, "Worng password!"));
+    if (!isPasswordCorrect) return next(createError(400, "Worng password!"));
 
     const token = jwt.sign(
       { id: user._id, isAdmin: user.isAdmin },
@@ -68,7 +67,7 @@ export const login = async (req, res, next) => {
         httpOnly: true,
       })
       .status(200)
-      .json({ details:{...otherDetails}, isAdmin });
+      .json({ details: { ...otherDetails }, isAdmin });
   } catch (err) {
     next(err);
   }
@@ -85,8 +84,7 @@ export const venderLogin = async (req, res, next) => {
       req.body.password,
       vender.password
     );
-    if (!isPasswordCorrect)
-      return next(createError(400, "Worng password!"));
+    if (!isPasswordCorrect) return next(createError(400, "Worng password!"));
 
     const token = jwt.sign(
       { id: vender._id, isVender: vender.isVender },
@@ -98,10 +96,9 @@ export const venderLogin = async (req, res, next) => {
       .cookie("access_token", token, {
         httpOnly: true,
       })
-      .status(200 )
-      .json({ details:{...otherDetails}, isVender });
+      .status(200)
+      .json({ details: { ...otherDetails }, isVender });
   } catch (err) {
     next(err);
   }
 };
-

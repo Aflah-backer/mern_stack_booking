@@ -10,11 +10,6 @@ import axios from "axios";
 // const navigate = useNavigate()
 const Navbar = () => {
   const { user, dispatch } = useContext(AuthContext);
-  const toVender =e =>{
-    axios.get("http://localhost:3002")
-    console.log("hello");
-    // navigate("/")
-  }
   const logout = (e) => {
     dispatch({ type: "LOGOUT" });
   };
@@ -32,7 +27,7 @@ const Navbar = () => {
             <a>
               <ul>
                 <li>Profile</li>
-                <li onClick={toVender}>become seller</li>
+                <li><a className="toVender" href="http://localhost:3001/">become seller</a></li>
                 <li onClick={logout}>logout</li>
               </ul>
             </a>
