@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 const VenderSchema = new mongoose.Schema(
   {
-    username: {
+    name: {
       type: String,
       required: true,
     },
@@ -31,7 +31,6 @@ const VenderSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      minilength:3
     },
     isVender: {
       type: Boolean,

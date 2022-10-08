@@ -18,9 +18,9 @@ function App() {
   const { darkMode } = useContext(DarkModeContext);
 
   const ProductedRoute = ({ children }) => {
-    const { user } = useContext(AuthContext);
+    const { vender } = useContext(AuthContext);
 
-    if (!user) {
+    if (!vender) {
       return <Navigate to="/login" />;
     }
 

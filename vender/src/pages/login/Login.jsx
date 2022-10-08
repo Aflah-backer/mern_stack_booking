@@ -7,7 +7,7 @@ import "./login.scss";
 
 function Login() {
   const [credentials, setCredentials] = useState({
-    username: undefined,
+    email: undefined,
     password: undefined,
   });
   const { loading, error, dispatch } = useContext(AuthContext);
@@ -22,9 +22,9 @@ function Login() {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("/auth/login", credentials);
+      const res = await axios.post("/auth/vender/login", credentials);
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-      if (res.data.isAdmin) {
+      if (res.data.isVender) {
         navigate("/");
       } else {
         dispatch({
@@ -41,10 +41,10 @@ function Login() {
       <div className="login">
         <h2 className="rTitle">Vender Login</h2>
         <input
-          type="text"
-          placeholder="username"
-          name="username"
-          id="username"
+          type="email"
+          placeholder="Email Address"
+          name="email"
+          id="email"
           onChange={handleChange}
           className="lInput"
         />

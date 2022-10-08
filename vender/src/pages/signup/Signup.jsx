@@ -10,22 +10,34 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext ";
 import "./signup.scss";
 function Signup() {
-  const [username, setUserName] = useState("");
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [mobile, setMobile] = useState("");
+  const [country, setCountry] = useState("");
+  const [city, setCity] = useState("")
   const [password, setPassword] = useState("");
 
   const nameChange = (e) => {
-    setUserName(e.target.value);
+    setName(e.target.value);
   };
   const emailChange = (e) => {
     setEmail(e.target.value);
   };
+  const countryChange = (e) => {
+    setCountry(e.target.value)
+  }
+  const cityChange = (e) => {
+    setCity(e.target.value)
+  }
+  const mobileChange = (e) => {
+    setMobile(e.target.value)
+  }
   const passwordChange = (e) => {
     setPassword(e.target.value);
   };
 
   const INITIAL_STATE = {
-    user: null,
+    vender: null,
     loading: false,
     error: null,
   };
@@ -33,19 +45,19 @@ function Signup() {
     switch (action.type) {
       case "SIGNUP_START":
         return {
-          user: null,
+          vender: null,
           loading: true,
           error: null,
         };
       case "SIGNUP_SUCCESS":
         return {
-          user: action.payload,
+          vender: action.payload,
           loading: false,
           error: null,
         };
       case "SIGNUP_FAILURE":
         return {
-          user: null,
+          vender: null,
           loading: false,
           error: action.payload,
         };
@@ -63,9 +75,12 @@ function Signup() {
   const handleClick = async (e) => {
     signupDispatch({ type: "SIGNUP_START" });
     try {
-      const res = await axios.post("/auth/register", {
-        username: username,
-        email: email,
+      const res = await axios.post("/auth/register/vender ", {
+        name: name,
+        email: email, 
+        country: country,
+        city:city,
+        phone: mobile,
         password: password,
       });
       signupDispatch({ type: "SIGNUP_SUCCESS", payload: res.data });
@@ -75,14 +90,15 @@ function Signup() {
   };
 
   useLayoutEffect(() => {
-    if (state.user) {
+    if (state.vender) {
       dispatch({
         type: "LOGIN_SUCCESS",
-        payload: state.user,
+        payload: state.vender,
       });
+
       navigate("/");
     }
-  }, [state.user]);
+  }, [state.vender]);
 
   return (
     <div className="page">
@@ -93,7 +109,7 @@ function Signup() {
             type="text"
             id="form3Example1cg"
             className="lInput"
-            placeholder="User name"
+            placeholder="Vender Name"
             onChange={nameChange}
           />
         </div>
@@ -105,6 +121,36 @@ function Signup() {
             placeholder="Your Email"
             className="lInput"
             onChange={emailChange}
+          />
+        </div>
+
+        <div className="form-outline mb-4">
+          <input
+            type="text"
+            id="form3Example3cg"
+            placeholder="Country"
+            className="lInput"
+            onChange={countryChange}
+          />
+        </div>
+
+        <div className="form-outline mb-4">
+          <input
+            type="text"
+            id="form3Example3cg"
+            placeholder="city"
+            className="lInput"
+            onChange={cityChange}
+          />
+        </div>
+
+        <div className="form-outline mb-4">
+          <input
+            type="number"
+            id="form3Example3cg"
+            placeholder="Mobile Number"
+            className="lInput"
+            onChange={mobileChange}
           />
         </div>
 

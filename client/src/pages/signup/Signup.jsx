@@ -23,6 +23,9 @@ function Signup() {
   const passwordChange = (e) => {
     setPassword(e.target.value);
   };
+  // console.log(username);
+  // console.log(email);
+  // console.log(password);
 
   const INITIAL_STATE = {
     user: null,
@@ -60,14 +63,17 @@ function Signup() {
 
   const navigate = useNavigate();
 
-  const handleClick = async (e) => {
+  const handleClick = async () => {
     signupDispatch({ type: "SIGNUP_START" });
+    console.log(10071);
     try {
-      const res = await axios.post("/auth/register", {
+      console.log(10072);
+      const res = await axios.post('http://localhost:8899/api/auth/register', {
         username: username,
         email: email,
         password: password,
       });
+      console.log(1234567890);
       signupDispatch({ type: "SIGNUP_SUCCESS", payload: res.data });
     } catch (err) {
       signupDispatch({ type: "SIGNUP_FAILURE", payload: err.response.data });
