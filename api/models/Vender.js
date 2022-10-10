@@ -35,6 +35,10 @@ const VenderSchema = new mongoose.Schema(
     isVender: {
       type: Boolean,
       default: true,
+    },
+    isAproved: {
+      type: Boolean,
+      default: false
     }
   },
   { timestamps: true }

@@ -3,7 +3,6 @@ import useFetch from "../../hooks/userFetch.js";
 
 const FeaturedProperties = () => {
   const { data, loading, error } = useFetch("/hotels?featured=true");
-  console.log(data);
   return (
     <div className="fp">
       {loading ? (

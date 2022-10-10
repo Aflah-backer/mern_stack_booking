@@ -6,7 +6,7 @@ import {
   getUsers,
   updatedUser,
 } from "../controllers/user.js";
-import { verifyAdmin, verifyToken, verifyUser } from '../utils/verifyToken.js'
+import { verifyAdmin, verifyToken, verifyUser, verifyVender } from '../utils/verifyToken.js'
 
 const router = express.Router();
 
@@ -17,9 +17,9 @@ router.put("/:id", verifyUser, updatedUser);
 router.delete("/:id",verifyUser, deleteUser);
 
 //GET
-router.get("/:id",verifyAdmin, getUser);
+router.get("/:id",verifyVender, getUser);
 
 //GET ALL
-router.get("/",verifyAdmin, getUsers);
+router.get("/", getUsers);
 
 export default router;

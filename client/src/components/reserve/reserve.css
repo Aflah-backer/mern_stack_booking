@@ -18,8 +18,8 @@
 
 .reClose{
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 3px;
+    right: 4px;
     cursor: pointer;
 }
 
@@ -41,6 +41,7 @@
 }
 
 .rTitle {
+    color: black;
     font-weight: 500;
 }
 
@@ -55,7 +56,7 @@
 .rButton {
     border: none;
     padding: 10px 20px;
-    background-color: #0071c2;
+    background-color: #2C043A;
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -68,8 +69,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
-    font-size: 8px;
-    color: gray;
+    font-size: 12px;
+    color: rgb(0, 0, 0);
 }
 
 .room {

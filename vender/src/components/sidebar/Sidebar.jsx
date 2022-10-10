@@ -1,6 +1,6 @@
 import "./sidebar.scss";
 import DashboardIcon from "@mui/icons-material/Dashboard";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
+// import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import Groups2RoundedIcon from '@mui/icons-material/Groups2Rounded';
 import CreditCardIcon from "@mui/icons-material/CreditCard";
 import StoreIcon from "@mui/icons-material/Store";

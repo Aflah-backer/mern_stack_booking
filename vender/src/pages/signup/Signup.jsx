@@ -39,7 +39,7 @@ function Signup() {
   const INITIAL_STATE = {
     vender: null,
     loading: false,
-    error: null,
+    err: null,
   };
   const SignupReducer = (state, action) => {
     switch (action.type) {
@@ -47,19 +47,19 @@ function Signup() {
         return {
           vender: null,
           loading: true,
-          error: null,
+          err: null,
         };
       case "SIGNUP_SUCCESS":
         return {
           vender: action.payload,
           loading: false,
-          error: null,
+          err: null,
         };
       case "SIGNUP_FAILURE":
         return {
           vender: null,
           loading: false,
-          error: action.payload,
+          err: action.payload,
         };
       default:
         return state;
@@ -68,7 +68,7 @@ function Signup() {
 
   const [state, signupDispatch] = useReducer(SignupReducer, INITIAL_STATE);
 
-  const { loading, dispatch, error } = useContext(AuthContext);
+  const { loading, dispatch, } = useContext(AuthContext);
 
   const navigate = useNavigate();
 
@@ -86,6 +86,7 @@ function Signup() {
       signupDispatch({ type: "SIGNUP_SUCCESS", payload: res.data });
     } catch (err) {
       signupDispatch({ type: "SIGNUP_FAILURE", payload: err.response.data });
+      // console.log(err.response.data.message);
     }
   };
 
@@ -180,7 +181,7 @@ function Signup() {
             Have already an account?{" "}
           </p>
         </Link>
-        {error && <span className="fError">{error.message}</span>}
+        {/* {err && <span className="fError">{err.message}</span>} */}
       </div>
     </div>
   );
