@@ -40,7 +40,6 @@ const AuthReducer = (state, action) => {
   }
 };
 
-// export const AuthContext = createContext(initialState);
 export const AuthContext = createContext(INITIAL_STATE);
 
 export const AuthContextProvider = ({ children }) => {

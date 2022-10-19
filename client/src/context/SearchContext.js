@@ -25,7 +25,8 @@ const SearchReducer = (state, action) => {
 
 export const SearchContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(SearchReducer, INITIAL_STATE);
-
+  console.log(state);
+  // localStorage.setItem("bookingDates", JSON.stringify(state))
   return (
     <SearchContext.Provider
       value={{

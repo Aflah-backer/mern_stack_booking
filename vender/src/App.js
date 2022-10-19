@@ -13,17 +13,20 @@ import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
 import NewHotel from "./pages/newHotel/NewHotel";
 import NewRoom from "./pages/newRoom/NewRoom";
 import Signup from "./pages/signup/Signup";
+import BeforeApprovel from "./pages/beforeApprovel/BeforeApprovel";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
-
+  
   const ProductedRoute = ({ children }) => {
     const { vender } = useContext(AuthContext);
-
+    console.log(vender);
     if (!vender) {
       return <Navigate to="/login" />;
     }
-
+    if(!vender.isAproved){
+      return <Navigate to = "/beforeApproved"/>
+    }
     return children;
   };
 
@@ -34,6 +37,7 @@ function App() {
           <Route path="/">
             <Route path="signup" element={<Signup />} />
             <Route path="login" element={<Login />} />
+            <Route path="beforeApproved" element={<BeforeApprovel/>}/>
             <Route
               index
               element={

@@ -34,7 +34,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/hotels", hotelsRouter);
 app.use("/api/rooms", roomsRouter);
 app.use("/api/users", usersRouter);
-app.use("/api/users/vender", venderRouter);
+app.use("/api/venders", venderRouter);
 
 app.use((err, req, res, next) => {
   const errorStatus = err.status || 500;

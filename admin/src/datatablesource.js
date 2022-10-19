@@ -43,7 +43,7 @@ export const userColumns = [
 ];
 
 export const hotelColumns = [
-  { field: "_id", headerName: "ID", width:250 },
+  { field: "_id", headerName: "ID", width: 250 },
   {
     field: "name",
     headerName: "Name",
@@ -64,10 +64,10 @@ export const hotelColumns = [
     headerName: "City",
     width: 100,
   },
-]
+];
 
 export const roomColumns = [
-  { field: "_id", headerName: "ID", width:250 },
+  { field: "_id", headerName: "ID", width: 250 },
   {
     field: "title",
     headerName: "Title",
@@ -88,4 +88,48 @@ export const roomColumns = [
     headerName: "Max People",
     width: 100,
   },
-]
+];
+
+export const vendersColumns = [
+  { field: "_id", headerName: "ID", width: 250 },
+  // {
+  //   field: "vender",
+  //   headerName: "Name",
+  //   width: 230,
+  //   renderCell: (params) => {
+  //     return (
+  //       <div className="cellWithImg">
+  //         <img
+  //           className="cellImg"
+  //           src={params.row.img || "https://i.ibb.co/MBtjqXQ/no-avatar.gif"}
+  //           alt="avatar"
+  //         />
+  //         {params.row.name}
+  //       </div>
+  //     );
+  //   },
+  // },
+  {
+    field: "email",
+    headerName: "Email",
+    width: 230,
+  },
+
+  {
+    field: "country",
+    headerName: "Country",
+    width: 100,
+  },
+
+  {
+    field: "city",
+    headerName: "City",
+    width: 100,
+  },
+
+  {
+    field: "phone",
+    headerName: "Phone",
+    width: 100,
+  },
+];

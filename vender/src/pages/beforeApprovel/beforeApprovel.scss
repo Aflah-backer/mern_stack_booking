@@ -1,0 +1,21 @@
+.spinner {
+    flex-direction: column;
+    height: 89.9vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btnlogout {
+    height: 35px;
+    color: red;
+    border: none;
+    border-radius: 4px;
+    margin-top: 3rem;
+}
+.btnlogout:hover { 
+    border: solid 1px;
+    height: 40px;   
+    font-size: 20px;
+    background-color: rgb(236, 145, 145);
+}

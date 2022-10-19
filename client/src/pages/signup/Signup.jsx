@@ -23,9 +23,6 @@ function Signup() {
   const passwordChange = (e) => {
     setPassword(e.target.value);
   };
-  // console.log(username);
-  // console.log(email);
-  // console.log(password);
 
   const INITIAL_STATE = {
     user: null,
@@ -65,15 +62,12 @@ function Signup() {
 
   const handleClick = async () => {
     signupDispatch({ type: "SIGNUP_START" });
-    console.log(10071);
     try {
-      console.log(10072);
       const res = await axios.post('http://localhost:8899/api/auth/register', {
         username: username,
         email: email,
         password: password,
       });
-      console.log(1234567890);
       signupDispatch({ type: "SIGNUP_SUCCESS", payload: res.data });
     } catch (err) {
       signupDispatch({ type: "SIGNUP_FAILURE", payload: err.response.data });
@@ -81,7 +75,7 @@ function Signup() {
   };
 
   useLayoutEffect(() => {
-    if (state.user) {
+    if (state.user) { 
       dispatch({
         type: "LOGIN_SUCCESS",
         payload: state.user,
@@ -93,7 +87,7 @@ function Signup() {
   return (
     <div className="page">
       <div className="signup">
-        <h2 className="rTitle">Create an account</h2>
+        <h2 className="rhead">Create an account</h2>
         <div className="form-outline mb-4">
           <input
             type="text"

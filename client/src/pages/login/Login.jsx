@@ -7,7 +7,7 @@ import "./login.css";
 
 function Login() {
   const [credentials, setCredentials] = useState({
-    username: undefined,
+    email: undefined,
     password: undefined,
   });
   const { loading, error, dispatch } = useContext(AuthContext);
@@ -32,12 +32,12 @@ function Login() {
   return (
     <div className="page">
       <div className="login">
-        <h2 className="rTitle">login</h2>
+        <h2 className="rHead">login</h2>
         <input
           type="text"
-          placeholder="username"
-          name="username"
-          id="username"
+          placeholder="Email Address"
+          name="email"
+          id="email"
           onChange={handleChange}
           className="lInput"
         />
