@@ -6,7 +6,7 @@ import "./login.scss";
 
 function Login() {
   const [credentials, setCredentials] = useState({
-    username: undefined,
+    email: undefined,
     password: undefined,
   });
   const { loading, error, dispatch } = useContext(AuthContext);
@@ -41,10 +41,10 @@ function Login() {
         <h2 className="rTitle">booking Admin</h2>
         <h2 className="rTitle">login</h2>
         <input
-          type="text"
-          placeholder="username"
-          name="username"
-          id="username"
+          type="email"
+          placeholder="Email Address"
+          name="email"
+          id="email"
           onChange={handleChange}
           className="lInput"
         />

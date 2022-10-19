@@ -27,7 +27,7 @@ const Sidebar = () => {
           <span className="logo">Booking.ml<br/>Admin</span>
         </Link>
       </div>
-      <hr />
+      {/* <hr /> */}
       <div className="center">
         <ul>
           <p className="title">MAIN</p>
@@ -56,37 +56,12 @@ const Sidebar = () => {
             <span>Rooms</span>
           </li>
           </Link>
+          <Link to="/venders" style={{ textDecoration: "none" }}>
           <li>
             <PersonOutlineIcon  className="icon" />
             <span>Vender</span>
           </li>
-          <p className="title">USEFUL</p>
-          <li>
-            <InsertChartIcon className="icon" />
-            <span>Stats</span>
-          </li>
-          <li>
-            <NotificationsNoneIcon className="icon" />
-            <span>Notifications</span>
-          </li>
-          <p className="title">SERVICE</p>
-          <li>
-            <SettingsSystemDaydreamOutlinedIcon className="icon" />
-            <span>System Health</span>
-          </li>
-          <li>
-            <PsychologyOutlinedIcon className="icon" />
-            <span>Logs</span>
-          </li>
-          <li>
-            <SettingsApplicationsIcon className="icon" />
-            <span>Settings</span>
-          </li>
-          <p className="title">USER</p>
-          <li>
-            <AccountCircleOutlinedIcon className="icon" />
-            <span>Profile</span>
-          </li>
+          </Link>
           <li>
             <ExitToAppIcon className="icon" />
             <span onClick={logout}>Logout</span>

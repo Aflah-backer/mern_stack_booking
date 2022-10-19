@@ -87,7 +87,7 @@ function Signup() {
   return (
     <div className="page">
       <div className="signup">
-        <h2 className="rTitle">Create an account</h2>
+        <h2 className="rhead">Create an account</h2>
         <div className="form-outline mb-4">
           <input
             type="text"

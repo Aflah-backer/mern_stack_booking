@@ -4,6 +4,7 @@ import {
   getVender,
   getVenders,
   updatedVender,
+  updateVender,
 } from "../controllers/vender.js";
 
 import {
@@ -15,6 +16,7 @@ import {
 
 const router = express.Router();
 
+router.put("/block/:id", verifyAdmin, updateVender)
 // update
 router.put("/:id", verifyVender, updatedVender);
 
@@ -25,7 +27,7 @@ router.delete("/:id", verifyVender, deleteVender);
 router.get("/find/:id", verifyAdmin, getVender);
 
 //get all venders
-router.get("/findAll/", verifyAdmin, getVenders);
+router.get("/", verifyAdmin, getVenders);
 
 
 export default router;

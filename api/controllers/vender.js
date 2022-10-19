@@ -43,3 +43,18 @@ export const getVenders = async (req, res, next) => {
   }
 };
 
+// block update
+export const updateVender = async (req, res, next) => {
+  console.log("hello");
+  console.log(req.params.id);
+  try {
+    const updatedVender = await Vender.findByIdAndUpdate(
+      req.params.id,
+      { $set:{isAproved: true}  },
+      { new: true }
+    );
+    res.status(200).json(updatedVender);
+  } catch (err) {
+    next(err);
+  }
+};

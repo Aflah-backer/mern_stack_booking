@@ -9,9 +9,14 @@ import "./style/dark.scss";
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
 import { AuthContext } from "./context/AuthContext ";
-import { hotelColumns, roomColumns, userColumns } from "./datatablesource";
+import {
+  hotelColumns,
+  roomColumns,
+  userColumns,
+  vendersColumns,
+} from "./datatablesource";
 import NewHotel from "./pages/newHotel/NewHotel";
-import NewRoom from "./pages/newRoom/NewRoom"
+import NewRoom from "./pages/newRoom/NewRoom";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
@@ -45,7 +50,7 @@ function App() {
                 index
                 element={
                   <ProductedRoute>
-                    <List  columns={userColumns}/>
+                    <List columns={userColumns} />
                   </ProductedRoute>
                 }
               />
@@ -66,12 +71,30 @@ function App() {
                 }
               />
             </Route>
+            <Route path="venders">
+              <Route
+                index
+                element={
+                  <ProductedRoute>
+                    <List columns={vendersColumns} />
+                  </ProductedRoute>
+                }
+              />
+              <Route
+                path=":venderId"
+                element={
+                  <ProductedRoute>
+                    <Single />
+                  </ProductedRoute>
+                }
+              />
+            </Route>
             <Route path="hotels">
               <Route
                 index
                 element={
                   <ProductedRoute>
-                    <List columns={hotelColumns}/>
+                    <List columns={hotelColumns} />
                   </ProductedRoute>
                 }
               />
@@ -97,7 +120,7 @@ function App() {
                 index
                 element={
                   <ProductedRoute>
-                    <List columns={roomColumns}/>
+                    <List columns={roomColumns} />
                   </ProductedRoute>
                 }
               />

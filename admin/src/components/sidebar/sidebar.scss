@@ -1,8 +1,7 @@
 .sidebar {
   flex: 1;
-  border-right: 0.5px solid rgb(230, 227, 227);
   min-height: 100vh;
-  background-color: white;
+  background-color: rgb(248, 248, 248);
 
   .top {
     height: 50px;
@@ -11,19 +10,16 @@
     justify-content: center;
 
     .logo {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: bold;
       color: #2C043A;
     }
   }
 
-  hr {
-    height: 0;
-    border: 0.5px solid rgb(230, 227, 227);
-  }
-
   .center {
-    padding-left: 10px;
+    padding-left: 30px;
+    margin-top: 5rem;
+    font-size: 55px;
 
     ul {
       list-style: none;

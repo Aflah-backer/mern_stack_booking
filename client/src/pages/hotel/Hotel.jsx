@@ -29,6 +29,9 @@ const Hotel = () => {
   const navigate = useNavigate();
   const { dates, options } = useContext(SearchContext);
 
+  localStorage.setItem("dates", JSON.stringify(dates))
+  console.log(dates);
+
   const MILLISECONDS_PER_DAY = 1000 * 60 * 60 * 24;
   function dayDifference(date1, date2) {
     const timeDiff = Math.abs(date2.getTime() - date1.getTime());
