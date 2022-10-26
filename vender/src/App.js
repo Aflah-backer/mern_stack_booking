@@ -2,6 +2,7 @@ import Home from "./pages/home/Home";
 import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
+import SingleHotel from "./pages/singleHotel/SingleHotel";
 import New from "./pages/new/New";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { userInputs } from "./formSource";
@@ -14,18 +15,18 @@ import NewHotel from "./pages/newHotel/NewHotel";
 import NewRoom from "./pages/newRoom/NewRoom";
 import Signup from "./pages/signup/Signup";
 import BeforeApprovel from "./pages/beforeApprovel/BeforeApprovel";
+import SingleRoom from "./pages/singleRoom/SingleRoom";
 
 function App() {
   const { darkMode } = useContext(DarkModeContext);
-  
+
   const ProductedRoute = ({ children }) => {
     const { vender } = useContext(AuthContext);
-    console.log(vender);
     if (!vender) {
       return <Navigate to="/login" />;
     }
-    if(!vender.isAproved){
-      return <Navigate to = "/beforeApproved"/>
+    if (!vender.isAproved) {
+      return <Navigate to="/beforeApproved" />;
     }
     return children;
   };
@@ -37,7 +38,7 @@ function App() {
           <Route path="/">
             <Route path="signup" element={<Signup />} />
             <Route path="login" element={<Login />} />
-            <Route path="beforeApproved" element={<BeforeApprovel/>}/>
+            <Route path="beforeApproved" element={<BeforeApprovel />} />
             <Route
               index
               element={
@@ -82,10 +83,10 @@ function App() {
                 }
               />
               <Route
-                path=":productId"
+                path=":dataId"
                 element={
                   <ProductedRoute>
-                    <Single />
+                    <SingleHotel />
                   </ProductedRoute>
                 }
               />
@@ -108,10 +109,10 @@ function App() {
                 }
               />
               <Route
-                path=":productId"
+                path=":dataId"
                 element={
                   <ProductedRoute>
-                    <Single />
+                    <SingleRoom />
                   </ProductedRoute>
                 }
               />

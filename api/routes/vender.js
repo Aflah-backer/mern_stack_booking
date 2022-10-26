@@ -27,7 +27,7 @@ router.delete("/:id", verifyVender, deleteVender);
 router.get("/find/:id", verifyAdmin, getVender);
 
 //get all venders
-router.get("/", verifyAdmin, getVenders);
+router.get("/", getVenders);
 
 
 export default router;

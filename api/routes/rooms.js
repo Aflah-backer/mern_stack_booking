@@ -24,7 +24,7 @@ router.put("/availability/:id", updatedRoomAvailabilty);
 router.delete("/:id/:hotelid", verifyVender, deleteRoom);
 
 //GET
-router.get("/:id", getRoom);
+router.get("/find/:id", getRoom);
 
 //GET ALL
 router.get("/", getRooms);

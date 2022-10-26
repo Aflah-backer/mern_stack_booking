@@ -27,7 +27,7 @@ const Navbar = () => {
             <a>
               <ul>
                 <li>Profile</li>
-                <li><a className="toVender" href="http://localhost:3001/" target="_blank" rel="noopener noreferrer">become seller</a></li>
+                <li><a className="toVender" href="http://localhost:3001/signup" target="_blank" rel="noopener noreferrer">become seller</a></li>
                 <li onClick={logout}>logout</li>
               </ul>
             </a>

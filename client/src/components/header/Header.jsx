@@ -68,7 +68,6 @@ const Header = ({ type }) => {
             </p>
         {type !== "list" && (
           <>
-            {!user && <button className="headerBtn">Sign in / Register</button>}
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />

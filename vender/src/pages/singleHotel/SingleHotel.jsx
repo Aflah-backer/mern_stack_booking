@@ -1,4 +1,4 @@
-import "./single.scss";
+import "./singleHotel.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import Chart from "../../components/chart/Chart";
@@ -8,18 +8,16 @@ import { useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useEffect } from "react";
 
-const Single = () => {
+const SingleHotel = () => {
   const location = useLocation();
   const path = location.pathname.split("/")[1];
   const [singleData, setSingleData] = useState([]);
   let id = useParams();
-  const { data, loading, error } = useFetch(`/${path}/find/${id.userId}`);
+  const { data, loading, error } = useFetch(`/${path}/find/${id.dataId}`);
 
   useEffect(() => {
     setSingleData(data);
   }, [data]);
-
-
   console.log(singleData);
 
   return (
@@ -32,30 +30,36 @@ const Single = () => {
             <div className="editButton">Edit</div>
             <h1 className="title">Information</h1>
             <div className="item">
-              <img
-                src={singleData.img}
-                alt="Profile picture"
-                className="itemImg"
-              />
+              {/* {singleData ? (
+                <img src="" alt="" className="itemImg" />
+              ) : (
+                <img src={singleData.photos[0]} alt="" className="itemImg" />
+              )} */}
               <div className="details">
-                <h1 className="itemTitle">{singleData.username}</h1>
+                <h1 className="itemTitle">{singleData.name}</h1>
                 <div className="detailItem">
-                  <span className="itemKey">Email:</span>
-                  <span className="itemValue">{singleData.email}</span>
+                  <span className="itemKey">Title:</span>
+                  <span className="itemValue">{singleData.title}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Phone:</span>
-                  <span className="itemValue">{singleData.phone}</span>
+                  <span className="itemKey">Type:</span>
+                  <span className="itemValue">{singleData.type}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Address:</span>
+                  <span className="itemValue">{singleData.address}</span>
                 </div>
                 <div className="detailItem">
                   <span className="itemKey">City:</span>
-                  <span className="itemValue">
-                    {singleData.city}
-                  </span>
+                  <span className="itemValue">{singleData.city}</span>
                 </div>
                 <div className="detailItem">
-                  <span className="itemKey">Country:</span>
-                  <span className="itemValue">{singleData.country}</span>
+                  <span className="itemKey">Distence:</span>
+                  <span className="itemValue">{singleData.distance}</span>
+                </div>
+                <div className="detailItem">
+                  <span className="itemKey">Price:</span>
+                  <span className="itemValue">{singleData.cheapestPrice}</span>
                 </div>
               </div>
             </div>
@@ -65,7 +69,7 @@ const Single = () => {
           </div>
         </div>
         <div className="bottom">
-          <h1 className="title">Last Transactions</h1>
+          <h1 className="title">New Users</h1>
           <List />
         </div>
       </div>
@@ -73,4 +77,4 @@ const Single = () => {
   );
 };
 
-export default Single;
+export default SingleHotel;
