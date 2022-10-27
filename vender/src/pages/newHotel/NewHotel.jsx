@@ -53,7 +53,7 @@ const NewHotel = () => {
         rooms,
         photos: list,
       };
-      await axios.post("/hotels", newhotel);
+      await axios.post("/hotels/", newhotel);
       navigate("/hotels")
     } catch (err) {}
   };

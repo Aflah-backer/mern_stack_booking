@@ -2,6 +2,7 @@ import mongoose from "mongoose";
 const HotelSchema = new mongoose.Schema({
   name: {
     type: String,
+    unique: true,
     required: true,
   },
   type: {
@@ -40,7 +41,7 @@ const HotelSchema = new mongoose.Schema({
     type: [String],
   },
   cheapestPrice: {
-    type: Number,
+    type: String,
     required: true,
   },
   featured: {
