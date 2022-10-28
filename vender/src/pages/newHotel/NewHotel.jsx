@@ -28,7 +28,6 @@ const NewHotel = () => {
     setRooms(value);
   };
 
-  console.log(files);
 
   const handleClick = async (e) => {
     e.preventDefault();
@@ -55,7 +54,9 @@ const NewHotel = () => {
       };
       await axios.post("/hotels/", newhotel);
       navigate("/hotels")
-    } catch (err) {}
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (

@@ -82,7 +82,7 @@ export const hotelInputs = [
   {
     id: "cheapestPrice",
     label: "Price",
-    type: "text",
+    type: "number",
     placeholder: "100",
   },
 ];

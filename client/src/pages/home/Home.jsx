@@ -13,6 +13,7 @@ const Home = () => {
       <Navbar />
       <Header />
       <div className="homeContainer">
+        <h1 className="homeTitle">Explore Best Hotel in kerala</h1>
         <Featured />
         <h1 className="homeTitle">Browse by property type</h1>
         <PropertyList />
