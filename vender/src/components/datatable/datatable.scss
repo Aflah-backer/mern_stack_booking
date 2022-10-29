@@ -74,5 +74,12 @@
       border: 1px dotted rgba(220, 20, 60, 0.6);
       cursor: pointer;
     }
+    .editButton {
+      padding: 2px 5px;
+      border-radius: 5px;
+      color: rgb(59, 105, 255);
+      border: 1px dotted rgba(59, 105, 255);
+      cursor: pointer;
+    }
   }
 }

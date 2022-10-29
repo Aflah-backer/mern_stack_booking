@@ -27,6 +27,9 @@ const Datatable = ({ columns }) => {
     } catch (error) {}
   };
 
+  const editButton = () => {
+  };
+
   const actionColumn = [
     {
       field: "action",
@@ -35,13 +38,19 @@ const Datatable = ({ columns }) => {
       renderCell: (params) => {
         return (
           <div className="cellAction">
-              <Link to={`/${path}/${params.row._id}`} style={{ textDecoration: "none" }}>
-                <div
-                  className="viewButton"
-                >
-                  View
-                </div>
-              </Link>
+            <Link
+              to={`/${path}/${params.row._id}`}
+              style={{ textDecoration: "none" }}
+            >
+              <div className="viewButton">View</div>
+            </Link>
+            {path === "users" ? (
+              ""
+            ) : (
+              <div className="editButton" onClick={editButton}>
+                Edit
+              </div>
+            )}
             {path === "users" ? (
               ""
             ) : (
@@ -52,6 +61,7 @@ const Datatable = ({ columns }) => {
                 Delete
               </div>
             )}
+
           </div>
         );
       },

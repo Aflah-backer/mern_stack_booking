@@ -1,18 +1,22 @@
 import "./navbar.scss";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext ";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
+import { faCaretDown, faUser } from "@fortawesome/free-solid-svg-icons";
+
 import axios from "axios";
 
-
-// const navigate = useNavigate()
 const Navbar = () => {
+  const navigate = useNavigate()
   const { user, dispatch } = useContext(AuthContext);
   const logout = (e) => {
     dispatch({ type: "LOGOUT" });
   };
+  
+  const toProfile = () => {
+    navigate("/profile")
+  }
   return (
     <div className="navbar">
       <div className="navContainer">
@@ -21,13 +25,13 @@ const Navbar = () => {
         </Link>
         {user ? (
           <span className="rUserName">
-            <h4 className="dropdown-menu">
-              hello..{user.username} <FontAwesomeIcon icon={faCaretDown} />
-            </h4>
+            <p className="dropdown-menu">
+            <FontAwesomeIcon icon={faUser} />  {user.username} <FontAwesomeIcon icon={faCaretDown} />
+            </p>
             <a>
               <ul>
-                <li>Profile</li>
-                <li><a className="toVender" href="http://localhost:3001/signup" target="_blank" rel="noopener noreferrer">become seller</a></li>
+                <li onClick={toProfile}>Profile</li>
+                <li ><a href="http://localhost:3001/signup" target="black" style={{textDecoration:"none", color: "black"}}>Become a Seller</a></li>
                 <li onClick={logout}>logout</li>
               </ul>
             </a>

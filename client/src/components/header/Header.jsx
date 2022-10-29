@@ -71,12 +71,13 @@ const Header = ({ type }) => {
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
-                <input
+                
+                {/* <input
                   type="text"
                   placeholder="Where are you going?"
                   className="headerSearchInput"
                   onChange={(e) => setDestination(e.target.value)}
-                />
+                /> */}
               </div>
               <div className="headerSearchItem" onClick={() => setOpenDate(!openDate)} >
                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
