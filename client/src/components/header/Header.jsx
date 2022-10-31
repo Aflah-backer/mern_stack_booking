@@ -4,6 +4,7 @@ import {
   faPerson,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import NativeSelect from "@mui/material/NativeSelect";
 import { DateRange } from "react-date-range";
 import { useContext, useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
@@ -13,6 +14,7 @@ import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext.js";
 import { AuthContext } from "../../context/AuthContext ";
 import "./header.scss";
+import useFetch from "../../hooks/userFetch.js";
 
 const Header = ({ type }) => {
   const [destination, setDestination] = useState("");
@@ -24,7 +26,16 @@ const Header = ({ type }) => {
       key: "selection",
     },
   ]);
- 
+
+
+  const { data } = useFetch("/hotels");
+
+  const newArray = data.map(item => item.city);
+
+  const city = newArray.filter((item, index) => {
+    return newArray.indexOf(item) === index;
+  });
+
   const [openOptions, setOpenOptions] = useState(false);
   const [options, setOptions] = useState({
     adult: 1,
@@ -43,15 +54,14 @@ const Header = ({ type }) => {
     });
   };
 
-  const { dispatch } = useContext(SearchContext)
+  const { dispatch } = useContext(SearchContext);
 
   const handleSearch = () => {
-    dispatch({type:"NEW_SEARCH", payload:{destination,dates,options}})
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
     navigate("/hotels", { state: { destination, dates, options } });
   };
 
   const { user } = useContext(AuthContext);
-
 
   return (
     <div className="header">
@@ -60,18 +70,29 @@ const Header = ({ type }) => {
           type === "list" ? "headerContainer listMode" : "headerContainer"
         }
       >
-        <h1 className="headerTitle">
-            Find your next stay
-            </h1>
-            <p className="headerDesc">
-            Search deals on hotels, homes, and much more...
-            </p>
+        <h1 className="headerTitle">Find your next stay</h1>
+        <p className="headerDesc">
+          Search deals on hotels, homes, and much more...
+        </p>
         {type !== "list" && (
           <>
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
-                
+
+                <NativeSelect
+                  defaultValue={30}
+                  inputProps={{
+                    name: "city",
+                    id: "uncontrolled-native",
+                  }}
+                  onChange={(e) => setDestination(e.target.value)}
+                >
+                  {city?.map((value => (
+                    <option value={value}>{value}</option>)
+                  ))}
+                </NativeSelect>
+
                 {/* <input
                   type="text"
                   placeholder="Where are you going?"
@@ -79,14 +100,15 @@ const Header = ({ type }) => {
                   onChange={(e) => setDestination(e.target.value)}
                 /> */}
               </div>
-              <div className="headerSearchItem" onClick={() => setOpenDate(!openDate)} >
+              <div
+                className="headerSearchItem"
+                onClick={() => setOpenDate(!openDate)}
+              >
                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
-                <span
-                  className="headerSearchText"
-                >{`${format(dates[0].startDate, "MM/dd/yyyy")} to ${format(
-                  dates[0].endDate,
+                <span className="headerSearchText">{`${format(
+                  dates[0].startDate,
                   "MM/dd/yyyy"
-                )}`}</span>
+                )} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}</span>
                 {openDate && (
                   <DateRange
                     editableDateInputs={true}
@@ -98,11 +120,12 @@ const Header = ({ type }) => {
                   />
                 )}
               </div>
-              <div className="headerSearchItem" onClick={() => setOpenOptions(!openOptions)}>
+              <div
+                className="headerSearchItem"
+                onClick={() => setOpenOptions(!openOptions)}
+              >
                 <FontAwesomeIcon icon={faPerson} className="headerIcon" />
-                <span
-                  className="headerSearchText"
-                >{`${options.adult} adult · ${options.children} children · ${options.room} room`}</span>
+                <span className="headerSearchText">{`${options.adult} adult · ${options.children} children · ${options.room} room`}</span>
                 {openOptions && (
                   <div className="options">
                     <div className="optionItem">

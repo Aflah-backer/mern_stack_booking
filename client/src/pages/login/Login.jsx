@@ -2,6 +2,7 @@ import axios from "axios";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext ";
+import ClipLoader from "react-spinners/ClipLoader";
 import { Link } from "react-router-dom";
 import "./login.css";
 
@@ -29,8 +30,18 @@ function Login() {
       dispatch({ type: "LOGIN_FAILURE", payload: err.response.data });
     }
   };
+
   return (
-    <div className="page">
+    <>
+    { loading ? (
+      <div className="spinnerInLogin">
+      <ClipLoader
+      size={50}
+      color="gray"
+      />
+      </div>
+    ) : (
+      <div className="page">
       <div className="login">
         <h2 className="rHead">login</h2>
         <input
@@ -40,7 +51,7 @@ function Login() {
           id="email"
           onChange={handleChange}
           className="lInput"
-        />
+          />
         <input
           type="password"
           placeholder="password"
@@ -48,7 +59,7 @@ function Login() {
           id="password"
           onChange={handleChange}
           className="lInput"
-        />
+          />
         <button disabled={loading} onClick={handleClick} className="lButton">
           Login
         </button>
@@ -60,7 +71,10 @@ function Login() {
         {error && <span className="fError">{error.message}</span>}
       </div>
     </div>
-  );
+      )
+    }
+          </>
+          );
 }
 
 export default Login;

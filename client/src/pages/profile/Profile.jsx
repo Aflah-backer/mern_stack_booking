@@ -1,16 +1,17 @@
 import * as React from "react";
 import Card from "@mui/material/Card";
 import { Container } from "@mui/material";
-import AppBar from "@mui/material/AppBar";
+import ClipLoader from "react-spinners/ClipLoader";
+import Header from "../../components/header/Header";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
 import Button from "@mui/material/Button";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext ";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import "./profile.scss";
 
 export default function Profile() {
   const [img, setImg] = useState();
@@ -51,9 +52,7 @@ export default function Profile() {
   const alldatas = { img, email, country, username, city, phone };
   const editButton = async () => {
     try {
-      console.log(alldatas);
-      const data = await axios.put(`/users/${user._id}`, alldatas);
-
+      await axios.put(`/users/${user._id}`, alldatas);
       await dispatch({ type: "LOGOUT" });
       navigate("/login");
     } catch (error) {
@@ -63,30 +62,70 @@ export default function Profile() {
 
   return (
     <>
-      <AppBar
+      {/* <AppBar
         sx={{
+          display: "flex",
+          justifyContent: "center",
           backgroundColor: "rgb(43, 48, 48)",
           width: "100%",
           height: "15vh",
         }}
-      ></AppBar>
+      >
+        <span>
+          <a className="title" href="/">
+            Booking.ml
+          </a>
+        </span>
+      </AppBar> */}
+      <Header/>
       <Container
         sx={{
+          backgroundColor:"#f1f1f1",
+          marginTop: "4rem",
           display: "flex",
           alignItems: "center",
           height: "100vh",
           width: "100%",
-          justifyContent: "center",
+          justifyContent: "space-around",
         }}
       >
-        <Card sx={{ maxWidth: 845 }}>
-          <CardMedia
-            component="img"
-            height="140"
-            image={user.img}
-            alt="no images"
-          />
-          <CardContent>
+        {loading ? (
+        <div className="spinnerInLogin">
+      <ClipLoader
+      size={50}
+      color="gray"
+      />
+      </div>) : (
+        <Card className="firstCard">
+          <div className="cardDiv">
+            <h4 className="profileTitle">Profile</h4>
+            <img src={user.img} alt="No Image" className="cardDiv" />
+          </div>
+          <div className="userData">
+            <div>
+              <span>Name: </span>
+              <span>{user.username}</span>
+            </div>
+            <div>
+              <span>Email: </span>
+              <span>{user.email}</span>
+            </div>
+            <div>
+              <span>Phone: </span>
+              <span>{user.phone}</span>
+            </div>
+            <div>
+              <span>Country: </span>
+              <span>{user.country}</span>
+            </div>
+            <div>
+              <span>City: </span>
+              <span>{user.city}</span>
+            </div>
+          </div>
+        </Card>)}
+        <Card className="cardStyle">
+          <CardContent className="cardContentStyle">
             <div>
               <input
                 type="file"
